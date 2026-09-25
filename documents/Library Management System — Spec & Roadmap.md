@@ -13,7 +13,7 @@ A small, complete CLI practice project for Java + Maven + PostgreSQL + Hibernate
 
 **Problem it solves:** Gives you a realistic reason to practice entity mapping, relationships, DAOs, HQL, and transactions, without any of it being contrived.
 
-**Main features:**
+**com.karam.library.Main features:**
 - Manage books (add, remove, list, search)
 - Manage members (register, list)
 - Borrow a book
@@ -148,7 +148,7 @@ src/
             ├── service/       # Business logic — borrow/return workflows, transactions
             ├── util/          # HibernateUtil (SessionFactory setup)
             ├── exception/     # Custom checked/unchecked exceptions
-            └── Main.java      # CLI entry point / menu loop
+            └── com.karam.library.Main.java      # CLI entry point / menu loop
 ```
 
 - `model` — pure data + mapping annotations, no logic.
@@ -156,7 +156,7 @@ src/
 - `service` — orchestrates DAOs, enforces business rules, owns transaction boundaries.
 - `util` — a single `HibernateUtil` class exposing a `SessionFactory`.
 - `exception` — your 3–4 custom exceptions.
-- `Main` — Scanner loop, calls into `service`, prints results.
+- `com.karam.library.Main` — Scanner loop, calls into `service`, prints results.
 
 No `controller`, no `dto`, no `mapper`, no `config` package beyond `util`. Anything more is over-engineering for this scope.
 
@@ -304,7 +304,7 @@ No Bean Validation (`@NotNull`, `@Email` annotations), no Spring validation — 
 
 ## 12. Development Steps
 
-**Step 1 — Create Maven project.** Verify: `mvn compile` succeeds with an empty `Main.java`.
+**Step 1 — Create Maven project.** Verify: `mvn compile` succeeds with an empty `com.karam.library.Main.java`.
 
 **Step 2 — Configure PostgreSQL.** Create the database and the three tables (or let Hibernate generate them via `hbm2ddl.auto=update` initially, then switch to `validate` once stable). Verify: you can connect via `psql` or a client and see an empty schema/tables.
 
@@ -324,7 +324,7 @@ No Bean Validation (`@NotNull`, `@Email` annotations), no Spring validation — 
 
 **Step 10 — Implement transactions** inside `BorrowingService.borrowBook`/`returnBook`. Verify: the two failure scenarios from Section 8 behave correctly — nothing half-committed.
 
-**Step 11 — Build CLI.** Wire `Main.java`'s menu loop to the services. Verify: full manual walkthrough of the Section 13 test list.
+**Step 11 — Build CLI.** Wire `com.karam.library.Main.java`'s menu loop to the services. Verify: full manual walkthrough of the Section 13 test list.
 
 **Step 12 — Add HQL search/report queries** (`searchByTitle`, `findAvailableBooks`, `findOverdue`, etc.) if not already done in Step 6/8. Verify: each query against seeded data returns exactly what you expect.
 
