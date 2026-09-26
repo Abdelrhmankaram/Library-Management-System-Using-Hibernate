@@ -10,19 +10,21 @@ public class Borrowing {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="book_id")
     private Book book;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="member_id")
     private Member member;
 
-    @Column
+    @Column(name = "borrow_date")
     private LocalDate borrowDate;
 
-    @Column
+    @Column(name = "return_date")
     private LocalDate returnDate;
+
+    public Borrowing() {}
 
     public long getId() {
         return id;

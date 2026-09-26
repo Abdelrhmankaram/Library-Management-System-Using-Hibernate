@@ -26,6 +26,8 @@ public class Book {
     @Column
     private boolean available;
 
+    public Book() {}
+
     public long getId() {
         return id;
     }
@@ -42,7 +44,7 @@ public class Book {
         return isbn;
     }
 
-    public int getPublished_year() {
+    public int getPublishedYear() {
         return publishedYear;
     }
 
@@ -66,7 +68,7 @@ public class Book {
         this.isbn = isbn;
     }
 
-    public void setPublished_year(int published_year) {
+    public void setPublishedYear(int published_year) {
         this.publishedYear = published_year;
     }
 

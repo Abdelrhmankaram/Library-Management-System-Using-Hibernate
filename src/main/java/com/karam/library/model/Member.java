@@ -14,6 +14,8 @@ public class Member {
     @Column
     private String email;
 
+    public Member() {}
+
     public long getId() {
         return id;
     }
