@@ -117,4 +117,8 @@ public record BorrowingService(BorrowingDao borrowingDao, BookDao bookDao, Membe
                 () -> System.out.println("Borrowing: not found")
         );
     }
+
+    public List<Borrowing> findAllBorrowed() {
+        return borrowingDao.findAllBorrowed();
+    }
 }

@@ -113,4 +113,9 @@ public class BorrowingDaoImpl implements BorrowingDao {
             session.getTransaction().commit();
         }
     }
+
+    @Override
+    public List<Borrowing> findAllBorrowed() {
+        return List.of();
+    }
 }
