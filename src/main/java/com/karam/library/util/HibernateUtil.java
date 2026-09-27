@@ -31,6 +31,8 @@ public class HibernateUtil {
     public static void shutdown() {
         if (!SESSION_FACTORY.isClosed()) {
             SESSION_FACTORY.close();
+            System.out.println("Session Factory is closed");
         }
+        System.out.println("Session Factory is already closed");
     }
 }
