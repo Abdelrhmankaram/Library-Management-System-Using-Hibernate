@@ -13,4 +13,5 @@ public interface BorrowingDao {
     List<Borrowing> findAllByMemberId(Long memberId);
     List<Borrowing> findAllActive();
     List<Borrowing> findOverdue(LocalDate cutoffDate);
+    void update(Borrowing borrowing);
 }

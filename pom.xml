@@ -26,6 +26,22 @@
             <artifactId>postgresql</artifactId>
             <version>42.7.13</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.jline</groupId>
+            <artifactId>jline-terminal</artifactId>
+            <version>3.26.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jline</groupId>
+            <artifactId>jline-reader</artifactId>
+            <version>3.26.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jline</groupId>
+            <artifactId>jline-console-ui</artifactId>
+            <version>3.26.0</version>
+        </dependency>
     </dependencies>
 
 </project>

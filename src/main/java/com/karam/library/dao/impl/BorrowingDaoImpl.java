@@ -102,4 +102,15 @@ public class BorrowingDaoImpl implements BorrowingDao {
                     .getResultList();
         }
     }
+
+    @Override
+    public void update(Borrowing borrowing) {
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            session.beginTransaction();
+
+            session.merge(borrowing);
+
+            session.getTransaction().commit();
+        }
+    }
 }

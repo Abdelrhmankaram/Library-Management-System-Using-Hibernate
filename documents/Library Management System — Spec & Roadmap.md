@@ -382,16 +382,16 @@ Pick zero or more, only after the base app fully works:
 ## 15. Completion Checklist
 
 ```text
-[ ] Maven project created
-[ ] PostgreSQL configured
-[ ] Hibernate configured
-[ ] Book entity created
-[ ] Member entity created
-[ ] Borrowing entity created
-[ ] Relationships mapped
-[ ] Book DAO implemented
-[ ] Member DAO implemented
-[ ] Borrowing DAO implemented
+[*] Maven project created
+[*] PostgreSQL configured
+[*] Hibernate configured
+[*] Book entity created
+[*] Member entity created
+[*] Borrowing entity created
+[*] Relationships mapped
+[*] Book DAO implemented
+[*] Member DAO implemented
+[*] Borrowing DAO implemented
 [ ] Service layer implemented
 [ ] Transactions implemented
 [ ] Custom exceptions implemented
