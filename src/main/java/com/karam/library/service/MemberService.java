@@ -47,4 +47,26 @@ public record MemberService(MemberDao memberDao) {
     public Optional<Member> findByEmail(String email) {
         return memberDao.findByEmail(email);
     }
+
+    public void printMembers(List<Member> members) {
+        if (members == null || members.isEmpty()) {
+            System.out.println("Members: (none found)");
+            return;
+        }
+
+        String format = "%-5s %-20s %-30s%n";
+        System.out.printf(format, "ID", "Name", "Email");
+        System.out.println("-".repeat(55));
+
+        for (Member member : members) {
+            System.out.printf(format, member.getId(), member.getName(), member.getEmail());
+        }
+    }
+
+    public void printMember(Optional<Member> member) {
+        member.ifPresentOrElse(
+                m -> printMembers(List.of(m)),
+                () -> System.out.println("Member: not found")
+        );
+    }
 }

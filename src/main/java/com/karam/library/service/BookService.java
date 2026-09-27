@@ -66,4 +66,37 @@ public record BookService(BookDao bookDao) {
     public Optional<Book> findByIsbn(String isbn) {
         return bookDao.findByIsbn(isbn);
     }
+
+    public void printBooks(List<Book> books) {
+        if (books == null || books.isEmpty()) {
+            System.out.println("Books: (none found)");
+            return;
+        }
+
+        String format = "%-5s %-25s %-20s %-15s %-6s %-10s%n";
+        System.out.printf(format, "ID", "Title", "Author", "ISBN", "Year", "Available");
+        System.out.println("-".repeat(85));
+
+        for (Book book : books) {
+            System.out.printf(format,
+                    book.getId(),
+                    truncate(book.getTitle(), 25),
+                    truncate(book.getAuthor(), 20),
+                    book.getIsbn(),
+                    book.getPublishedYear(),
+                    book.isAvailable());
+        }
+    }
+
+    public void printBook(Optional<Book> book) {
+        book.ifPresentOrElse(
+                b -> printBooks(List.of(b)),
+                () -> System.out.println("Book: not found")
+        );
+    }
+
+    private String truncate(String value, int maxLength) {
+        if (value == null) return "";
+        return value.length() > maxLength ? value.substring(0, maxLength - 1) + "…" : value;
+    }
 }

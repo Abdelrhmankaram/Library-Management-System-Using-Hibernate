@@ -90,4 +90,31 @@ public record BorrowingService(BorrowingDao borrowingDao, BookDao bookDao, Membe
     public List<Borrowing> findOverdue(LocalDate cutoffDate) {
         return borrowingDao.findOverdue(cutoffDate);
     }
+
+    public void printBorrowings(List<Borrowing> borrowings) {
+        if (borrowings == null || borrowings.isEmpty()) {
+            System.out.println("Borrowings: (none found)");
+            return;
+        }
+
+        String format = "%-5s %-25s %-20s %-12s %-12s%n";
+        System.out.printf(format, "ID", "Book", "Member", "Borrowed", "Returned");
+        System.out.println("-".repeat(80));
+
+        for (Borrowing borrowing : borrowings) {
+            String bookTitle = borrowing.getBook() != null ? borrowing.getBook().getTitle() : "N/A";
+            String memberName = borrowing.getMember() != null ? borrowing.getMember().getName() : "N/A";
+            String borrowed = borrowing.getBorrowDate() != null ? borrowing.getBorrowDate().toString() : "—";
+            String returned = borrowing.getReturnDate() != null ? borrowing.getReturnDate().toString() : "not yet";
+
+            System.out.printf(format, borrowing.getId(), bookTitle, memberName, borrowed, returned);
+        }
+    }
+
+    public void printBorrowing(Optional<Borrowing> borrowing) {
+        borrowing.ifPresentOrElse(
+                b -> printBorrowings(List.of(b)),
+                () -> System.out.println("Borrowing: not found")
+        );
+    }
 }
